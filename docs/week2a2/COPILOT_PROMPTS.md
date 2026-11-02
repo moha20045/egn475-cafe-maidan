@@ -1,40 +1,54 @@
-# Copilot prompt plan (user must run/verify in Copilot)
+# EGN 475 - Week 2 Assignment 2.2
+## My AI activity log - Café Calle Ocho
 
-## menu.html
+The initial six static HTML pages were prepared with ChatGPT assistance. I then used GitHub Copilot in VS Code to review and correct each individual page. The entries below record my actual review prompts and Copilot's reported outcomes; I am not claiming Copilot created the initial HTML files.
 
-Context: Café Calle Ocho static ordering prototype. Build ONLY mockup/menu.html. Use semantic HTML, the Pico CSS v2 CDN https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css, no JavaScript, no backend. Use relative links to the six pages. Match the labeled wireframe and realistic Cuban café prices. Acceptance: opens in browser; nav works; do not claim anything persists.
+### Menu - commit `809e27d`
 
-Create menu.html with categories, four sample products, prices/descriptions, a milk dropdown, a quantity input with min=1, sold-out message, Add and View Order links.
+**My Copilot prompt:** Review my mockup/menu.html file for EGN 475 Café Calle Ocho. Remove the Order Confirmation link from the navigation, but keep the other five navigation links. Add a visible note explaining that quantities must be at least 1. Keep the existing menu items, milk dropdown, quantity input, Pico CSS, and links. Do not add JavaScript or backend code. Explain what you changed.
 
-## order.html
+**Copilot reported:** Removed the Confirmation navigation link and added the quantity-minimum note.
 
-Context: Café Calle Ocho static ordering prototype. Build ONLY mockup/order.html. Use semantic HTML, the Pico CSS v2 CDN https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css, no JavaScript, no backend. Use relative links to the six pages. Match the labeled wireframe and realistic Cuban café prices. Acceptance: opens in browser; nav works; do not claim anything persists.
+**My verification:** I opened the page in a desktop browser, checked the visible layout and navigation, and committed the page separately as `809e27d`.
 
-Create order.html with a two-item cart table listing options, quantities, subtotals and total; pickup name, notes and confirmation link.
+### Your Order - commit `fd67fef`
 
-## confirmation.html
+**My Copilot prompt:** Review mockup/order.html for my EGN 475 Café Calle Ocho project. Remove the Order Confirmation link from the navigation while keeping the other five links. Add a visible validation note explaining that the customer name cannot be blank when placing an order. Preserve the existing cart table, customer inputs, Pico CSS and navigation. Make sure the Place Order button links to confirmation.html and Back to Menu links to menu.html. Do not add JavaScript or backend code. Explain what you changed.
 
-Context: Café Calle Ocho static ordering prototype. Build ONLY mockup/confirmation.html. Use semantic HTML, the Pico CSS v2 CDN https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css, no JavaScript, no backend. Use relative links to the six pages. Match the labeled wireframe and realistic Cuban café prices. Acceptance: opens in browser; nav works; do not claim anything persists.
+**Copilot reported:** Removed the Confirmation navigation link, added the customer-name note, preserved the cart, and checked the Place Order and Back to Menu links.
 
-Create confirmation.html with a sample number 1042, Received status, item breakdown, total, location, and return links.
+**My verification:** I opened the page in a desktop browser, checked the visible layout and navigation, and committed the page separately as `fd67fef`.
 
-## kitchen.html
+### Order Confirmation - commit `a2809d1`
 
-Context: Café Calle Ocho static ordering prototype. Build ONLY mockup/kitchen.html. Use semantic HTML, the Pico CSS v2 CDN https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css, no JavaScript, no backend. Use relative links to the six pages. Match the labeled wireframe and realistic Cuban café prices. Acceptance: opens in browser; nav works; do not claim anything persists.
+**My Copilot prompt:** Review mockup/confirmation.html. Make only these changes: remove the Confirmation link from the navigation, keep the other five navigation links, and ensure the Order Again button links to menu.html. Do not rewrite the whole file. Do not change the existing order details, layout, Pico CSS, or other elements. Do not add JavaScript.
 
-Create kitchen.html: staff table sorted ascending order #1040 to #1042, items, statuses and next action links; show Received/Preparing/Ready stages.
+**Copilot reported:** Removed Confirmation from the header navigation and changed the existing button to Order Again, linked to menu.html.
 
-## history.html
+**My verification:** I opened the page in a desktop browser, checked the visible layout and navigation, and committed the page separately as `a2809d1`.
 
-Context: Café Calle Ocho static ordering prototype. Build ONLY mockup/history.html. Use semantic HTML, the Pico CSS v2 CDN https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css, no JavaScript, no backend. Use relative links to the six pages. Match the labeled wireframe and realistic Cuban café prices. Acceptance: opens in browser; nav works; do not claim anything persists.
+### Kitchen Board - commit `01109ac`
 
-Create history.html with picked-up order history and link back to kitchen board; describe empty state.
+**My Copilot prompt:** Review mockup/kitchen.html for my EGN 475 Café Calle Ocho assignment. Make only these changes: remove Confirmation from the navigation while keeping five links, add a visible empty-state example note saying No active orders, and match the sample kitchen rows to the wireframe. Preserve the three-row order table, status labels, Pico CSS and Order History link. Do not rewrite the whole file or add JavaScript or backend code. Explain your changes.
 
-## admin.html
+**Copilot reported:** Removed Confirmation from navigation; added No active orders; aligned the items for order #1042.
 
-Context: Café Calle Ocho static ordering prototype. Build ONLY mockup/admin.html. Use semantic HTML, the Pico CSS v2 CDN https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css, no JavaScript, no backend. Use relative links to the six pages. Match the labeled wireframe and realistic Cuban café prices. Acceptance: opens in browser; nav works; do not claim anything persists.
+**My verification:** I opened the page in a desktop browser, checked the visible layout and navigation, and committed the page separately as `01109ac`.
 
-Create admin.html with availability dropdowns and new-item fields; clearly label manager-only and static-only.
+### Order History - commit `78d6566`
 
-## Suggested review prompt
-Compare this HTML to my wireframe. Identify missing elements and incorrect links, then revise only this page. Keep Pico CSS and no JavaScript.
+**My Copilot prompt:** Review mockup/history.html for my EGN 475 Café Calle Ocho assignment. Remove Confirmation from the navigation, keeping the five main links. Preserve the existing two-row order history table and sample data. Ensure Back to Kitchen Board links to kitchen.html. Preserve Pico CSS and semantic HTML. Do not rewrite the entire file or add JavaScript or backend code. Explain exactly what changed and verify the links.
+
+**Copilot reported:** Removed Confirmation from navigation, preserved both history rows, and kept the kitchen return link.
+
+**My verification:** I opened the page in a desktop browser, checked the visible layout and navigation, and committed the page separately as `78d6566`.
+
+### Menu Admin - commit `bfa8e7f`
+
+**My Copilot prompt:** Review mockup/admin.html for my EGN 475 Café Calle Ocho assignment. Remove the Confirmation navigation link while retaining the other five links. Preserve both dropdowns, menu item name, description and price inputs, existing sample data, Pico CSS and semantic HTML. Ensure Preview Customer Menu links to menu.html. Do not rewrite the file or add JavaScript or backend code. Explain the changes and verify the required elements.
+
+**Copilot reported:** Removed Confirmation from navigation and preserved the availability dropdowns, form fields, and customer-menu link.
+
+**My verification:** I opened the page in a desktop browser, checked the visible layout and navigation, and committed the page separately as `bfa8e7f`.
+
+**Prototype scope:** The HTML pages use realistic sample data. Form submission and kitchen status changes are nonfunctional until a backend is added.
