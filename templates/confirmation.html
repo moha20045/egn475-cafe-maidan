@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Order Confirmation | Café Calle Ocho{% endblock %}
+
+{% block content %}
+  <h1>Order Confirmation</h1>
+  <article>
+    <header><strong>Sample confirmation</strong></header>
+    <h2>Order #{{ confirmation.order_number }}</h2>
+    <p><strong>Status:</strong> {{ confirmation.status }}</p>
+    <p><strong>Pickup name:</strong> {{ confirmation.pickup_name }}</p>
+    <p>
+      <strong>Items:</strong>
+      {% for item in cart %}
+        {{ item.quantity }} × {{ item.name }}{% if item.options %} ({{ item.options }}){% endif %}{% if not loop.last %}, {% endif %}
+      {% endfor %}
+    </p>
+    <p><strong>Total:</strong> ${{ "%.2f"|format(total_cents / 100) }}</p>
+    <p><strong>Pickup location:</strong> Café Calle Ocho, Little Havana, Miami</p>
+    <p><small>Preview only. No order has been submitted or saved.</small></p>
+  </article>
+  <div role="group">
+    <a href="{{ url_for('menu') }}" role="button" class="secondary">Back to Menu</a>
+    <a href="{{ url_for('menu') }}" role="button">Order Again</a>
+  </div>
+{% endblock %}

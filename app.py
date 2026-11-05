@@ -130,6 +130,24 @@ def order_new():
     )
 
 
+@app.route("/order/confirmation")
+def order_confirmation():
+    total_cents = sum(
+        item["price_cents"] * item["quantity"] for item in SAMPLE_CART
+    )
+    confirmation = {
+        "order_number": 1042,
+        "status": "Received",
+        "pickup_name": "Marta Rodriguez",
+    }
+    return render_template(
+        "confirmation.html",
+        confirmation=confirmation,
+        cart=SAMPLE_CART,
+        total_cents=total_cents,
+    )
+
+
 @app.route("/kitchen")
 def kitchen():
     orders = sorted(SAMPLE_KITCHEN_ORDERS, key=lambda order: order["order_id"])

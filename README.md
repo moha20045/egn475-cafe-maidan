@@ -1,43 +1,48 @@
-# Café Calle Ocho – Ordering App Prototype
+# Café Calle Ocho — Ordering App Prototype
 
-## Project Choice
-Option A: Café Calle Ocho in Little Havana. I chose this project because a café ordering system is familiar and can help reduce waiting times and improve communication between customers and kitchen staff.
+## Project description
 
-## Problem Statement
-Café Calle Ocho currently relies on customers ordering at the counter and staff communicating order details manually. This can cause long lines, ordering mistakes, and delays for customers and kitchen employees. Our prototype will allow customers to browse the menu and place pickup orders online while kitchen staff track orders through received, preparing, ready, and picked up stages, reducing confusion and improving service.
+Café Calle Ocho is a pickup-ordering prototype for a café in Little Havana. The project explores how online menu browsing and a kitchen order board could reduce counter lines, ordering mistakes, and confusion between customers and staff.
 
-## Persona 1 – Customer
-Name: Marta Rodriguez
-Role: Regular café customer
-Goals: Order coffee and breakfast quickly for pickup.
-Frustrations: Long lines and uncertain wait times.
-Technology comfort: Moderate; uses her smartphone daily.
-Quote: "I want my coffee ready when I arrive so I can get to work on time."
+The customer persona is Marta Rodriguez, a regular café customer who wants coffee and breakfast ready for pickup. The staff persona is Carlos Perez, a kitchen employee who needs clear order details and status tracking.
 
-## Persona 2 – Staff
-Name: Carlos Perez
-Role: Kitchen employee
-Goals: See incoming orders clearly and update their status.
-Frustrations: Missing details and confusion during busy hours.
-Technology comfort: Basic to moderate; comfortable using a tablet.
-Quote: "I need to know which order to prepare next without guessing."
+## Project goals
 
-## Must-Have Features
-1. View menu items and prices.
-2. Select products and quantities.
-3. Place pickup orders.
-4. Receive an order confirmation and number.
-5. Kitchen staff order board.
-6. Update order status through four stages.
-7. View order history.
-8. Admin can manage menu items.
+The broader project scope includes viewing menu items and prices, choosing products and quantities, placing pickup orders, receiving an order confirmation and number, managing kitchen order statuses, viewing order history, and managing menu items.
 
-## Out of Scope
-1. Online payments.
-2. Delivery services.
-3. SMS notifications.
-4. Loyalty rewards.
-5. Native mobile application.
+Out of scope are online payments, delivery, SMS notifications, loyalty rewards, and a native mobile application.
 
-## AI Use
-GitHub Copilot Chat was used for a five-question product-design interview. The project scope was selected based on the interview and assignment requirements.
+## Setup
+
+From the project directory, create and activate a virtual environment in PowerShell:
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+```
+
+## Run locally
+
+```powershell
+flask --app app run --debug
+```
+
+Open the local address printed by Flask, typically `http://127.0.0.1:5000/`.
+
+## Routes
+
+| Route | Page |
+| --- | --- |
+| `/` | Home |
+| `/menu` | Café menu |
+| `/menu/<int:item_id>` | Menu item details; unknown IDs return a custom 404 |
+| `/order/new` | Sample order summary |
+| `/order/confirmation` | Sample Order Confirmation |
+| `/kitchen` | Kitchen Board |
+| `/orders` | Completed Order History |
+| `/about` | About text |
+
+## Preview limitations
+
+The menu, cart, kitchen orders, and history use sample data in `app.py`. Forms and status actions are previews only; the app does not save orders, change statuses, or use a database. The Order Confirmation route displays illustrative sample data and does not indicate that an order was submitted. Menu administration and other functional ordering behavior are not implemented.
