@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Menu | Café Calle Ocho{% endblock %}
+
+{% block content %}
+  <h1>Menu</h1>
+  <p>Choose a café favorite for pickup. Prices shown in USD.</p>
+
+  <nav aria-label="Categories">
+    <ul>
+      <li><a href="{{ url_for('menu', _anchor='coffee') }}">Coffee</a></li>
+      <li><a href="{{ url_for('menu', _anchor='bakery') }}">Bakery</a></li>
+      <li><a href="{{ url_for('menu', _anchor='snacks') }}">Snacks</a></li>
+    </ul>
+  </nav>
+
+  {% if items %}
+    {% set categories = [('coffee', 'Coffee'), ('bakery', 'Bakery'), ('snacks', 'Snacks')] %}
+    {% for category_id, category_name in categories %}
+      <section id="{{ category_id }}">
+        <h2>{{ category_name }}</h2>
+        {% for item in items if item.category == category_id %}
+          <article>
+            <h3>{{ item.name }} — ${{ "%.2f"|format(item.price_cents / 100) }}</h3>
+            <p>{{ item.description }}</p>
+            {% if not item.available %}
+              <span>Sold out — unavailable</span>
+            {% else %}
+              {% if item.id == 1 %}
+                <label for="milk">Milk type</label>
+                <select id="milk" aria-label="Milk type preview">
+                  <option>Whole milk</option>
+                  <option>Oat milk</option>
+                </select>
+                <label for="qty">Quantity</label>
+                <input id="qty" type="number" min="1" value="2" aria-describedby="qty-help">
+                <small id="qty-help">Quantity must be at least 1.</small>
+              {% endif %}
+              <button type="button" disabled>Add to order (preview)</button>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </section>
+    {% endfor %}
+  {% else %}
+    <p>No menu items are available right now.</p>
+  {% endif %}
+
+  <p><button type="button" class="contrast" disabled>View your order (preview)</button></p>
+  <p><small>Sample menu only. Preview controls do not save or submit an order.</small></p>
+{% endblock %}

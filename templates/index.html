@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Café Calle Ocho{% endblock %}
+
+{% block content %}
+  <h1>Welcome to Café Calle Ocho</h1>
+  <p>Enjoy Cuban café favorites from the heart of Little Havana.</p>
+  <p><a href="{{ url_for('menu') }}" role="button">Explore the menu</a></p>
+{% endblock %}

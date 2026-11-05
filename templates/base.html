@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Café Calle Ocho{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  </head>
+  <body>
+    <header class="container">
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><strong>Café Calle Ocho</strong></li>
+        </ul>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('menu') }}">Menu</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <p><small>Little Havana • Miami • Pickup ordering prototype</small></p>
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="container">
+      <small>EGN 475 | Week 3 | Flask preview</small>
+    </footer>
+  </body>
+</html>
