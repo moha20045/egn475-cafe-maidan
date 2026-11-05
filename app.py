@@ -88,6 +88,27 @@ SAMPLE_KITCHEN_ORDERS = [
     },
 ]
 
+SAMPLE_HISTORY = [
+    {
+        "id": 1037,
+        "completed": "Today, 9:02 AM",
+        "items": "1 × Guava pastelito",
+        "status": "Picked up",
+    },
+    {
+        "id": 1038,
+        "completed": "Today, 9:15 AM",
+        "items": "1 × Café con leche",
+        "status": "Picked up",
+    },
+    {
+        "id": 1039,
+        "completed": "Today, 9:27 AM",
+        "items": "2 × Cortadito",
+        "status": "Picked up",
+    },
+]
+
 
 @app.route("/", endpoint="home")
 def home():
@@ -113,6 +134,11 @@ def order_new():
 def kitchen():
     orders = sorted(SAMPLE_KITCHEN_ORDERS, key=lambda order: order["order_id"])
     return render_template("kitchen.html", orders=orders)
+
+
+@app.route("/orders")
+def orders():
+    return render_template("history.html", history=SAMPLE_HISTORY)
 
 
 @app.route("/menu/<int:item_id>")

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Order History | Café Calle Ocho{% endblock %}
+
+{% block content %}
+  <h1>Order History</h1>
+  <p>Completed pickup orders are shown separately from the active kitchen board.</p>
+
+  {% if history %}
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Order #</th>
+          <th scope="col">Completed</th>
+          <th scope="col">Items</th>
+          <th scope="col">Final status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in history %}
+          <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.completed }}</td>
+            <td>{{ order["items"] }}</td>
+            <td>{{ order.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No completed orders yet.</p>
+  {% endif %}
+
+  <p><a href="{{ url_for('kitchen') }}" role="button">Back to kitchen board</a></p>
+{% endblock %}
