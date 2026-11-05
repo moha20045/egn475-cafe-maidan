@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Your Order | Café Calle Ocho{% endblock %}
+
+{% block content %}
+  <h1>Your Order</h1>
+  <p>Review your selections before confirming pickup.</p>
+
+  {% if cart %}
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Options</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart %}
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.options or "—" }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>${{ "%.2f"|format(item.price_cents * item.quantity / 100) }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="3" scope="row">Sample total</th>
+          <th>${{ "%.2f"|format(total_cents / 100) }}</th>
+        </tr>
+      </tfoot>
+    </table>
+  {% else %}
+    <p>Your order is empty.</p>
+  {% endif %}
+
+  <form>
+    <label for="pickup">Pickup name</label>
+    <input id="pickup" name="pickup" type="text" placeholder="Marta Rodriguez" required>
+
+    <label for="notes">Order notes (optional)</label>
+    <textarea id="notes" name="notes" rows="2" placeholder="Notes for the kitchen"></textarea>
+
+    <div role="group">
+      <a href="{{ url_for('menu') }}" role="button" class="secondary">Back to Menu</a>
+      <button type="button" disabled>Place Order</button>
+    </div>
+  </form>
+
+  <p><small>Preview only. Saving orders will be added in Week 4.</small></p>
+{% endblock %}

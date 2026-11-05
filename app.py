@@ -55,6 +55,21 @@ SAMPLE_ITEMS = [
     },
 ]
 
+SAMPLE_CART = [
+    {
+        "name": "Café con leche",
+        "options": "Oat milk",
+        "quantity": 2,
+        "price_cents": 350,
+    },
+    {
+        "name": "Guava pastelito",
+        "options": None,
+        "quantity": 1,
+        "price_cents": 295,
+    },
+]
+
 
 @app.route("/", endpoint="home")
 def home():
@@ -64,6 +79,16 @@ def home():
 @app.route("/menu", endpoint="menu")
 def menu():
     return render_template("menu.html", items=SAMPLE_ITEMS)
+
+
+@app.route("/order/new")
+def order_new():
+    total_cents = sum(
+        item["price_cents"] * item["quantity"] for item in SAMPLE_CART
+    )
+    return render_template(
+        "order.html", cart=SAMPLE_CART, total_cents=total_cents
+    )
 
 
 @app.route("/menu/<int:item_id>")

@@ -47,6 +47,6 @@
     <p>No menu items are available right now.</p>
   {% endif %}
 
-  <p><button type="button" class="contrast" disabled>View your order (preview)</button></p>
+  <p><a href="{{ url_for('order_new') }}" role="button" class="contrast">View your order</a></p>
   <p><small>Sample menu only. Preview controls do not save or submit an order.</small></p>
 {% endblock %}
