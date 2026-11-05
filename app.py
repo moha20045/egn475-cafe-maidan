@@ -70,6 +70,24 @@ SAMPLE_CART = [
     },
 ]
 
+SAMPLE_KITCHEN_ORDERS = [
+    {
+        "order_id": 1040,
+        "items": "1 × Cortadito",
+        "status": "Ready",
+    },
+    {
+        "order_id": 1041,
+        "items": "1 × Guava pastelito",
+        "status": "Preparing",
+    },
+    {
+        "order_id": 1042,
+        "items": "2 × Café con leche, 1 × pastelito",
+        "status": "Received",
+    },
+]
+
 
 @app.route("/", endpoint="home")
 def home():
@@ -89,6 +107,12 @@ def order_new():
     return render_template(
         "order.html", cart=SAMPLE_CART, total_cents=total_cents
     )
+
+
+@app.route("/kitchen")
+def kitchen():
+    orders = sorted(SAMPLE_KITCHEN_ORDERS, key=lambda order: order["order_id"])
+    return render_template("kitchen.html", orders=orders)
 
 
 @app.route("/menu/<int:item_id>")

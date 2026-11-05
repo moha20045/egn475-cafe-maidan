@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Kitchen Board | Café Calle Ocho{% endblock %}
+
+{% block content %}
+  <h1>Kitchen Board</h1>
+  <p>Staff view: active pickup orders, ordered by ascending order number.</p>
+
+  {% if orders %}
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Order #</th>
+          <th scope="col">Items / notes</th>
+          <th scope="col">Status</th>
+          <th scope="col">Next action (preview)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+          <tr>
+            <td>{{ order.order_id }}</td>
+            <td>{{ order["items"] }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+              {% if order.status == "Received" %}
+                <button type="button" class="outline" disabled>Start preparing</button>
+              {% elif order.status == "Preparing" %}
+                <button type="button" class="outline" disabled>Mark ready</button>
+              {% elif order.status == "Ready" %}
+                <button type="button" class="outline" disabled>Mark picked up</button>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No active orders.</p>
+  {% endif %}
+
+  <p><small>Status changes are previews only; no order statuses are saved or changed.</small></p>
+{% endblock %}
