@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Page not found | Café Calle Ocho{% endblock %}
+
+{% block content %}
+  <h1>Page not found</h1>
+  <p>The page or menu item you requested could not be found.</p>
+  <p><a href="{{ url_for('menu') }}">Back to Menu</a></p>
+{% endblock %}

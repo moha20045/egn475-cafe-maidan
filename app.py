@@ -1,5 +1,5 @@
 # Import Flask helpers for the app and its templates.
-from flask import Flask, render_template
+from flask import Flask, abort, render_template
 
 # Create the Flask app for this file.
 app = Flask(__name__)
@@ -64,6 +64,19 @@ def home():
 @app.route("/menu", endpoint="menu")
 def menu():
     return render_template("menu.html", items=SAMPLE_ITEMS)
+
+
+@app.route("/menu/<int:item_id>")
+def item_detail(item_id):
+    item = next((sample for sample in SAMPLE_ITEMS if sample["id"] == item_id), None)
+    if item is None:
+        abort(404)
+    return render_template("item.html", item=item)
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("404.html"), 404
 
 
 @app.route("/about")
